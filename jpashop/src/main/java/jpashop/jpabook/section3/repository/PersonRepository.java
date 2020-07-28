@@ -13,6 +13,10 @@ public class PersonRepository {
     @PersistenceContext
     private EntityManager em;
 
+    public PersonRepository(EntityManager em) {
+        this.em = em;
+    }
+
     public void save(Person person){
         em.persist(person);
     }
