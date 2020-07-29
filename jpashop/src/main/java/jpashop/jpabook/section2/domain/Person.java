@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Person {
 
     @Id @GeneratedValue
@@ -22,5 +23,4 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private List<Order> orders = new ArrayList<>();
-
 }

@@ -41,7 +41,7 @@ public abstract class Item {
         int inventory = this.stockQuantity - stockQuantity;
 
         if (inventory < 0 ){
-            throw new NotEnoughStockException("재고가 부족합니다.");
+            throw new NotEnoughStockException("상품 재고가 부족합니다.");
         }
         this.stockQuantity = inventory;
     }
