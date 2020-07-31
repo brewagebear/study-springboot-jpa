@@ -38,12 +38,12 @@ public class ItemController {
             return "section4/items/createItemForm";
         }
 
-        Book book = new Book();
-        book.setName(bookForm.getName());
-        book.setAuthor(bookForm.getAuthor());
-        book.setIsbn(bookForm.getIsbn());
-        book.setPrice(bookForm.getPrice());
-        book.setStockQuantity(bookForm.getStockQuantity());
+        Book book = Book.createBook(
+                bookForm.getName(),
+                bookForm.getAuthor(),
+                bookForm.getPrice(),
+                bookForm.getStockQuantity(),
+                bookForm.getIsbn());
 
         itemService.saveItem(book);
         return "redirect:/items";
