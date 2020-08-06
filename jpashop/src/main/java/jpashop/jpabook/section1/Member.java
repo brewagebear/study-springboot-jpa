@@ -2,7 +2,6 @@ package jpashop.jpabook.section1;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +15,7 @@ public class Member {
     @Id
     @GeneratedValue
     private Long id;
+
     private String userName;
 
 }

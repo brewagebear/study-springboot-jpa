@@ -7,10 +7,13 @@ import jpashop.jpabook.section2.domain.Person;
 import jpashop.jpabook.section2.domain.item.Item;
 import jpashop.jpabook.section3.repository.ItemRepository;
 import jpashop.jpabook.section3.repository.OrderRepository;
+import jpashop.jpabook.section3.repository.OrderSearch;
 import jpashop.jpabook.section3.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -60,7 +63,7 @@ public class OrderService {
     /**
      * 주문 검색
      */
-//    public List<Order> searchOrders(OrderSearch orderSearch){
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> searchOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByQueryDSL(orderSearch);
+    }
 }
