@@ -1,12 +1,16 @@
 package jpashop.jpabook.api;
 
+import jpashop.jpabook.domain.Address;
 import jpashop.jpabook.domain.Order;
+import jpashop.jpabook.domain.OrderStatus;
 import jpashop.jpabook.repository.OrderRepository;
 import jpashop.jpabook.repository.OrderSearch;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -24,6 +28,10 @@ public class OrderSimpleApiController {
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1(){
         List<Order> all = orderRepository.findAllByQueryDSL(new OrderSearch()); // * 검색
+        for (Order order : all) {
+            order.getMember().getName(); // LAZY 강제 초기화
+            order.getDelivery().getAddress();
+        }
         return all;
     }
 }
