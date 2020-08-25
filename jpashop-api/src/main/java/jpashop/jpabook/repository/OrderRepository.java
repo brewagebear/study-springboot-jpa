@@ -3,6 +3,7 @@ package jpashop.jpabook.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
+import jpashop.jpabook.api.OrderSimpleApiController;
 import jpashop.jpabook.domain.Order;
 import jpashop.jpabook.domain.OrderStatus;
 import jpashop.jpabook.domain.QMember;
@@ -59,4 +60,18 @@ public class OrderRepository {
         }
         return QOrder.order.status.eq(statusCond);
     }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
+
+    public List<OrderSimpleApiController.SimpleOrderDto> findOrderDtos() {
+
+    }
+
+
 }

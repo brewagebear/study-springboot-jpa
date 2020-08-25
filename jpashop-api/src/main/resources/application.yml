@@ -28,4 +28,4 @@ logging:
     org.hibernate.type: trace
 
 server:
-  port: 8888
+  port: 8088
